@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "comments",
+  "info": {
+    "singularName": "comment",
+    "pluralName": "comments",
+    "displayName": "Comment",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "text": {
+      "type": "text",
+      "required": true,
+      "maxLength": 250
+    },
+    "product": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::product.product",
+      "inversedBy": "comments"
+    },
+    "subcomments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::subcomment.subcomment",
+      "mappedBy": "comment"
+    }
+  }
+}
